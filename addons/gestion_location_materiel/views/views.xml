@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_form_materiel" model="ir.ui.view">
+            <field name="name">gestion.location.materiel.form</field>
+            <field name="model">gestion.location.materiel</field>
+            <field name="arch" type="xml">
+                <form string="Material">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="reference"/>
+                            <field name="description"/>
+                            <field name="category"/>
+                            <field name="rental_price"/>
+                            <field name="availability"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_materiel" model="ir.ui.view">
+            <field name="name">gestion.location.materiel.tree</field>
+            <field name="model">gestion.location.materiel</field>
+            <field name="arch" type="xml">
+                <tree string="Materials">
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="category"/>
+                    <field name="rental_price"/>
+                    <field name="availability"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_materiel" model="ir.actions.act_window">
+            <field name="name">Materials</field>
+            <field name="res_model">gestion.location.materiel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html"><![CDATA[<p>Manage your materials available for rent.</p>]]></field>
+        </record>
+
+        <menuitem id="menu_location_root" name="Gestion Location" sequence="10"/>
+        <menuitem id="menu_location_materiel" name="Materials" parent="menu_location_root" action="action_materiel" sequence="10"/>
+
+        <record id="view_form_reservation" model="ir.ui.view">
+            <field name="name">gestion.location.reservation.form</field>
+            <field name="model">gestion.location.reservation</field>
+            <field name="arch" type="xml">
+                <form string="Rental Reservation">
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="client_id"/>
+                            <field name="materiel_id"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="state"/>
+                            <field name="total_days" readonly="1"/>
+                            <field name="total_amount" readonly="1"/>
+                            <field name="rental_price" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_reservation" model="ir.ui.view">
+            <field name="name">gestion.location.reservation.tree</field>
+            <field name="model">gestion.location.reservation</field>
+            <field name="arch" type="xml">
+                <tree string="Reservations">
+                    <field name="name"/>
+                    <field name="client_id"/>
+                    <field name="materiel_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="state"/>
+                    <field name="total_amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_reservation" model="ir.actions.act_window">
+            <field name="name">Reservations</field>
+            <field name="res_model">gestion.location.reservation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html"><![CDATA[<p>Manage your rental reservations.</p>]]></field>
+        </record>
+
+        <menuitem id="menu_location_reservation" name="Reservations" parent="menu_location_root" action="action_reservation" sequence="20"/>
+
+        <record id="view_form_revenu" model="ir.ui.view">
+            <field name="name">gestion.location.revenu.form</field>
+            <field name="model">gestion.location.revenu</field>
+            <field name="arch" type="xml">
+                <form string="Rental Revenue">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="reservation_id"/>
+                            <field name="materiel_id"/>
+                            <field name="amount"/>
+                            <field name="payment_method"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_revenu" model="ir.ui.view">
+            <field name="name">gestion.location.revenu.tree</field>
+            <field name="model">gestion.location.revenu</field>
+            <field name="arch" type="xml">
+                <tree string="Revenues">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="reservation_id"/>
+                    <field name="materiel_id"/>
+                    <field name="amount"/>
+                    <field name="payment_method"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_revenu" model="ir.actions.act_window">
+            <field name="name">Revenues</field>
+            <field name="res_model">gestion.location.revenu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html"><![CDATA[<p>Manage your rental revenues.</p>]]></field>
+        </record>
+
+        <menuitem id="menu_location_revenu" name="Revenues" parent="menu_location_root" action="action_revenu" sequence="30"/>
+
+    </data>
+</odoo>

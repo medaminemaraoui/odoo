@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="email_template_notification" model="mail.template">
+            <field name="name">Notification de Location de Matériel</field>
+            <field name="subject">Confirmation de votre réservation</field>
+            <field name="email_from">${(user.email or 'noreply@example.com')}</field>
+            <field name="body_html">
+                <![CDATA[
+                    <p>Bonjour ${object.partner_id.name},</p>
+                    <p>Votre réservation de matériel a été confirmée. Voici les détails :</p>
+                    <ul>
+                        <li><strong>Matériel : </strong>${object.materiel_id.name}</li>
+                        <li><strong>Réservation : </strong>${object.date_start}</li>
+                    </ul>
+                    <p>Merci pour votre confiance.</p>
+                    <p>Cordialement,</p>
+                    <p>L'équipe de gestion du matériel</p>
+                ]]>
+            </field>
+            <field name="model_id" ref="gestion_location_materiel.model_reservation"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="email_template_cancellation" model="mail.template">
+            <field name="name">Annulation de Réservation</field>
+            <field name="subject">Votre réservation a été annulée</field>
+            <field name="email_from">${(user.email or 'noreply@example.com')}</field>
+            <field name="body_html">
+                <![CDATA[
+                    <p>Bonjour ${object.partner_id.name},</p>
+                    <p>Nous vous informons que votre réservation de matériel a été annulée.</p>
+                    <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
+                    <p>Cordialement,</p>
+                    <p>L'équipe de gestion du matériel</p>
+                ]]>
+            </field>
+            <field name="model_id" ref="gestion_location_materiel.model_reservation"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

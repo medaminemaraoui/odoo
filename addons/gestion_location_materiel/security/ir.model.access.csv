@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestion_location_materiel,access.gestion.location.materiel,model_gestion_location_materiel,base.group_user,1,1,1,1
+access_gestion_location_reservation,access.gestion.location.reservation,model_gestion_location_reservation,base.group_user,1,1,1,1
+access_gestion_location_revenu,access.gestion.location.revenu,model_gestion_location_revenu,base.group_user,1,1,1,1
